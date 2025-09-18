@@ -65,5 +65,4 @@ const MessageInput: React.FC<MessageInputProps> = ({
     </form>
   );
 };
-
 export default MessageInput;

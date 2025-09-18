@@ -40,6 +40,11 @@ const ChatInterface: React.FC = () => {
     scrollToBottom();
   }, [messages]);
 
+  useEffect(() => {
+  console.log('🧠 Updated conversation context:', conversationContext);
+}, [conversationContext]);
+
+
   const loadChatHistory = async (sessionId: string) => {
     try {
       const response = await chatApi.getChatHistory(sessionId);
