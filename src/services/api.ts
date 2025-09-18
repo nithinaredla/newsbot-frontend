@@ -1,8 +1,10 @@
 import axios from 'axios';
-import { ChatResponse, ApiError } from '../types';
+import { ChatResponse, ApiError, SystemStatus, SessionInfo } from '../types';
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+// Use environment variable with fallback
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://newsbot-backend-bnnc.onrender.com';
 
+console.log('API Base URL:', API_BASE_URL); // Debug log
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -75,17 +77,17 @@ export const chatApi = {
     return response.data;
   },
 
-  getSystemStatus: async () => {
+  getSystemStatus: async (): Promise<SystemStatus> => {
     const response = await api.get('/api/chat/status');
     return response.data;
   },
 
-  createSession: async (sessionId?: string) => {
+  createSession: async (sessionId?: string): Promise<{ sessionId: string }> => {
     const response = await api.post('/api/session', { sessionId });
     return response.data;
   },
 
-  getSessionInfo: async (sessionId: string) => {
+  getSessionInfo: async (sessionId: string): Promise<SessionInfo> => {
     const response = await api.get(`/api/session/${sessionId}`);
     return response.data;
   },

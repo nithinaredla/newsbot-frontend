@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+import { chatApi } from './api';
 
 export const generateSessionId = (): string => {
   return `sess_${Date.now()}_${uuidv4().substr(0, 8)}`;
@@ -24,4 +25,15 @@ export const clearSession = (): string => {
 export const isValidSessionId = (sessionId: string): boolean => {
   const sessionIdRegex = /^sess_\d+_[a-zA-Z0-9]{8}$/;
   return sessionIdRegex.test(sessionId);
+};
+
+// New function to initialize session with backend
+export const initializeSessionWithBackend = async (sessionId: string): Promise<boolean> => {
+  try {
+    await chatApi.createSession(sessionId);
+    return true;
+  } catch (error) {
+    console.error('Failed to initialize session with backend:', error);
+    return false;
+  }
 };
