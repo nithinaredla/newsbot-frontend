@@ -1,0 +1,129 @@
+.chat-interface {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f8fafc; // $bg-secondary
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); // $shadow-lg
+  border-radius: 8px; // $border-radius
+  overflow: hidden;
+
+  .chat-header {
+    // Using direct flex properties
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px; // $spacing-md $spacing-lg
+    background: #2563eb; // $primary-color
+    color: white;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); // $shadow-sm
+
+    .header-left {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+
+      .session-id {
+        font-size: 0.75rem;
+        opacity: 0.7;
+        font-family: monospace;
+      }
+    }
+
+    .message-count {
+      font-size: 0.7rem;
+      opacity: 0.6;
+      font-family: monospace;
+    }
+
+    .reset-button {
+      // Button reset styles
+      border: none;
+      background: none;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+      font-family: inherit;
+      
+      background: rgba(255, 255, 255, 0.2);
+      padding: 8px 16px; // $spacing-sm $spacing-md
+      border-radius: 8px; // $border-radius
+      color: white;
+      font-size: 0.9rem;
+      transition: background-color 0.2s;
+
+      &:hover:not(:disabled) {
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      &:active:not(:disabled) {
+        transform: translateY(1px);
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        
+        &:hover {
+          background: rgba(255, 255, 255, 0.2);
+          transform: none;
+        }
+      }
+    }
+  }
+
+  .error-banner {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+    padding: 16px; // $spacing-md
+    margin: 0 16px; // $spacing-md
+    border-radius: 8px; // $border-radius
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+
+    .dismiss-error {
+      // Button reset styles
+      border: none;
+      background: none;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+      font-family: inherit;
+      
+      font-size: 1.2rem;
+      color: #dc2626;
+      padding: 4px; // $spacing-xs
+      border-radius: 50%;
+
+      &:hover {
+        background: #fecaca;
+      }
+    }
+  }
+}
+
+// Responsive design
+@media (min-width: 640px) {
+  .chat-interface {
+    margin: 16px; // $spacing-md
+    height: calc(100vh - 32px); // $spacing-xl
+    border-radius: 8px; // $border-radius
+  }
+}
+
+@media (min-width: 768px) {
+  .chat-interface {
+    margin: 24px auto; // $spacing-lg
+    height: 90vh;
+  }
+}
+

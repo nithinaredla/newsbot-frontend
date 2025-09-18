@@ -1,0 +1,61 @@
+.App {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 16px; // Using direct value instead of variable to avoid import issues
+
+  // Using direct flex properties instead of mixin
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Responsive adjustments
+@media (min-width: 640px) {
+  .App {
+    padding: 16px;
+  }
+}
+
+@media (min-width: 768px) {
+  .App {
+    padding: 24px;
+  }
+}
+
+.error-fallback {
+  // Using direct flex properties
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  text-align: center;
+  padding: 32px;
+
+  h2 {
+    color: #ef4444; // $error-color
+    margin-bottom: 16px;
+    font-size: 1.5rem;
+  }
+
+  p {
+    color: #64748b; // $text-secondary
+    margin-bottom: 24px;
+    font-size: 1.1rem;
+  }
+
+  button {
+    background: #2563eb; // $primary-color
+    color: white;
+    border: none;
+    padding: 16px 24px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background: #1d4ed8; // darken($primary-color, 10%)
+    }
+  }
+}
